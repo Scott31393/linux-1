@@ -1432,6 +1432,37 @@ static const struct panel_desc bananapi_s070wv20_ct16 = {
 	},
 };
 
+static const struct drm_display_mode boe_ev156fhm_n10_modes[] = {
+	{
+		.clock = 100000,
+		.hdisplay = 1920,
+		.hsync_start = 1920 + 88,
+		.hsync_end = 1920 + 88 + 44,
+		.htotal = 1920 + 88 + 44 +148,
+		.vdisplay = 1080,
+		.vsync_start = 1080 + 4,
+		.vsync_end = 1080 + 4 + 5,
+		.vtotal = 1080 + 4 + 5 + 36,
+	},
+};
+
+static const struct panel_desc boe_ev156fhm_n10 = {
+	.modes = boe_ev156fhm_n10_modes,
+	.num_modes = ARRAY_SIZE(boe_ev156fhm_n10_modes),
+	.bpc = 6,
+	.size = {
+		.width = 320,
+		.height = 187,
+	},
+	/* .delay = {
+		.prepare = 210,
+		.enable = 50,
+		.unprepare = 160,
+	}, */
+	.bus_format = MEDIA_BUS_FMT_RGB666_1X18,
+	.connector_type = DRM_MODE_CONNECTOR_eDP,
+};
+
 static const struct drm_display_mode boe_hv070wsa_mode = {
 	.clock = 42105,
 	.hdisplay = 1024,
@@ -4288,6 +4319,9 @@ static const struct of_device_id platform_of_match[] = {
 	}, {
 		.compatible = "bananapi,s070wv20-ct16",
 		.data = &bananapi_s070wv20_ct16,
+	}, {
+		.compatible = "boe,ev156fhm-n10",
+		.data = &boe_ev156fhm_n10,
 	}, {
 		.compatible = "boe,hv070wsa-100",
 		.data = &boe_hv070wsa
